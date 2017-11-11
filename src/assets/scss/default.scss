@@ -1,0 +1,75 @@
+$font-stack: Quicksand,
+sans-serif;
+
+/* ==========================================================================
+   Layout Class
+   ========================================================================== */
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: $font-stack;
+    color: #515158;
+}
+
+
+/* ==========================================================================
+   Utilities Class
+   ========================================================================== */
+
+.text-left {
+    text-align: left
+}
+
+.text-right {
+    text-align: right
+}
+
+.text-center {
+    text-align: center
+}
+
+
+/* ==========================================================================
+   Main Layout Class
+   ========================================================================== */
+
+#root {
+    width: 100%;
+}
+
+.component-app {
+    padding: 20px
+}
+
+.panel-editor {
+    padding: 10px;
+}
+
+h1 {
+    font-weight: normal
+}
+
+textarea {
+    width: 100%;
+    border: 1px solid #ebebeb;
+    height: 400px;
+    background-color: #f8f8f8;
+    font-size: 14px;
+}
+
+.component-editor {
+    position: relative;
+}
+
+.component-editor .label {
+    position: absolute;
+    bottom: -20px;
+    right: 5px;
+    font-size: 11px;
+    color: #999999
+}

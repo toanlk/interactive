@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "Work",
+        "number_of_tasks": 5,
+        "task_completed": 2,
+        "color": "",
+        "icon": ""
+    },
+    {
+        "id": 2,
+        "name": "Personal",
+        "number_of_tasks": 3,
+        "task_completed": 1,
+        "color": "",
+        "icon": ""
+    },
+    {
+        "id": 3,
+        "name": "Home",
+        "number_of_tasks": 7,
+        "task_completed": 2,
+        "color": "",
+        "icon": ""
+    }
+]

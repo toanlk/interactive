@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "category_id": 1,
+        "task": "Meet Clients",
+        "is_completed": false
+    },
+    {
+        "id": 2,
+        "category_id": 1,
+        "task": "Design Print",
+        "is_completed": false
+    },
+    {
+        "id": 3,
+        "category_id": 1,
+        "task": "Icon Set Design for Mobile App",
+        "is_completed": false
+    },
+    {
+        "id": 4,
+        "category_id": 1,
+        "task": "HTML/CSS Study",
+        "is_completed": true
+    },
+    {
+        "id": 5,
+        "category_id": 1,
+        "task": "Weekly Report",
+        "is_completed": true
+    },
+    {
+        "id": 6,
+        "category_id": 2,
+        "task": "Design Meeting",
+        "is_completed": true
+    },
+    {
+        "id": 7,
+        "category_id": 2,
+        "task": "Quick Prototype",
+        "is_completed": false
+    },
+    {
+        "id": 8,
+        "category_id": 2,
+        "task": "UX Conference",
+        "is_completed": false
+    },
+    {
+        "id": 9,
+        "category_id": 3,
+        "task": "Learn German",
+        "is_completed": false
+    },
+    {
+        "id": 10,
+        "category_id": 3,
+        "task": "Looking for kids",
+        "is_completed": false
+    },
+    {
+        "id": 11,
+        "category_id": 3,
+        "task": "Research about the blockchain",
+        "is_completed": false
+    },
+    {
+        "id": 12,
+        "category_id": 3,
+        "task": "Cooking",
+        "is_completed": false
+    },
+    {
+        "id": 13,
+        "category_id": 3,
+        "task": "Listening to music",
+        "is_completed": false
+    },
+    {
+        "id": 14,
+        "category_id": 3,
+        "task": "Test WebServer",
+        "is_completed": false
+    },
+    {
+        "id": 15,
+        "category_id": 3,
+        "task": "Playing WOT",
+        "is_completed": false
+    }
+]

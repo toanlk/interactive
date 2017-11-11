@@ -1,0 +1,38 @@
+{
+  "name": "interactive",
+  "version": "1.0.0",
+  "description": "Interactive Map",
+  "main": "index.tsx",
+  "author": "toanlk",
+  "license": "ISC",
+  "dependencies": {
+    "@types/react": "^16.0.22",
+    "@types/react-dom": "^16.0.3",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-webpack": "^3.0.2",
+    "material-ui": "^1.0.0-beta.20",
+    "material-ui-icons": "^1.0.0-beta.17",
+    "mobx": "^3.3.1",
+    "mobx-react": "^4.3.4",
+    "node-sass": "^4.6.0",
+    "react": "^16.1.0",
+    "react-dom": "^16.1.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.0"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^3.3.0",
+    "source-map-loader": "^0.2.3",
+    "time-grunt": "^1.4.0",
+    "typescript": "^2.6.1",
+    "webpack-dev-server": "^2.9.4"
+  },
+  "scripts": {
+    "start": "./node_modules/.bin/webpack-dev-server --progress",
+    "build": "webpack"
+  }
+}
