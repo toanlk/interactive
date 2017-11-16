@@ -1,5 +1,4 @@
-$font-stack: Quicksand,
-sans-serif;
+$font-stack: Quicksand, sans-serif;
 
 /* ==========================================================================
    Layout Class
@@ -14,6 +13,12 @@ body {
     padding: 0;
     font-family: $font-stack;
     color: #515158;
+    font-size: 13px;
+    background-color: #eeeeee
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Quicksand', sans-serif !important;
 }
 
 
@@ -33,6 +38,10 @@ body {
     text-align: center
 }
 
+.flex {
+    flex: 1,
+}
+
 
 /* ==========================================================================
    Main Layout Class
@@ -42,34 +51,10 @@ body {
     width: 100%;
 }
 
-.component-app {
-    padding: 20px
-}
+.component-app { margin: 0 }
 
-.panel-editor {
-    padding: 10px;
-}
-
-h1 {
-    font-weight: normal
-}
-
-textarea {
-    width: 100%;
-    border: 1px solid #ebebeb;
-    height: 400px;
-    background-color: #f8f8f8;
-    font-size: 14px;
-}
-
-.component-editor {
-    position: relative;
-}
-
-.component-editor .label {
-    position: absolute;
-    bottom: -20px;
-    right: 5px;
-    font-size: 11px;
-    color: #999999
+.avatar {
+    background-color: #ffffff;
+    width: 32px !important;
+    height: 32px !important
 }

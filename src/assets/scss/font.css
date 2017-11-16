@@ -11,3 +11,73 @@
     font-weight: 500;
     src: local('Quicksand Medium'), local('Quicksand-Medium'), url('../fonts/quicksand/Quicksand_normal_500_default.woff') format('woff');
 }
+#root { width: 100%; overflow: hidden; }
+.component-app {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.appbar {
+    position: absolute !important;
+    z-index: 2 !important;
+    box-shadow: none !important;
+    border-bottom: 1px solid #e5e5e5;
+    background-color: #ffffff !important
+}
+.drawerHeader { height: 65px }
+.drawerBottom {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 2px 8px;
+    border-top: 1px solid #e5e5e5;
+    background-color: #edf0f2;
+    line-height: 40px;
+    position: absolute;
+    bottom: 0;
+    width: 100%
+}
+.btnToggle:hover { color: #ff6d00 !important }
+.selected { color: #ff6d00 !important }
+
+.drawerPaper {
+    position: relative;
+    z-index: 1 !important;
+}
+
+.drawerInner {
+    height: 100%;
+    width: 240px;
+    z-index: 1 !important;
+    color: #777777
+}
+.drawerInner svg { color: inherit }
+.drawerInner h3 {
+    text-transform: uppercase;
+    font-size: 14px;
+    color: inherit;
+    font-weight: 500
+}
+.drawerInner li:hover {
+    color: #ff6d00 !important
+}
+.drawerInnerClose {
+    width: 60px;
+    overflow-x: hidden
+}
+.btnNotification { margin-right: 10px }
+.lstMenu { margin: 0; padding: 0 !important; }
+.lstTitle { padding-bottom: 0 !important }
+.lstTitle h3 { text-transform: none !important; }
+
+.main-content {
+    width: 100%;
+    flex-grow: 1;
+    background-color: #eeeeee;
+    padding: 24px;
+    height: 100%;
+    margin-top: 65px;
+    margin-left: 240px
+}
