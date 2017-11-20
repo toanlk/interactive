@@ -41,7 +41,7 @@ export class Navigation extends React.Component<MainProps, MainState> {
                 <div className={this.state.open ? "drawerInner" : "drawerInnerClose"}>
                     <div className="drawerHeader"></div>
                     <List className="lstMenu">
-                        <Link to='/'>
+                        <Link to='/' className="selected">
                             <ListItem button>
                                 <ListItemIcon><HomeIcon /></ListItemIcon>
                                 <ListItemText primary="Home" />

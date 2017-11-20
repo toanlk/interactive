@@ -2,11 +2,12 @@ import * as React from 'react';
 import { observer } from 'mobx-react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-import { Header } from './View/Header';
-import { Navigation } from './View/Navigation';
-import { Home } from './View/Home';
-import { Trading } from './View/Trading';
-import { Transactions } from './Logic/Transactions';
+import { Header } from './view/Header';
+import { Navigation } from './view/Navigation';
+import { Home } from './view/Home';
+import { Trading } from './view/Trading';
+import { Topics } from './view/Topics';
+import { Transactions } from './logic/Transactions';
 
 //// Props and States /////////////////////////////////////////////////////////////////////
 
@@ -28,7 +29,7 @@ export class Main extends React.Component<MainProps, MainState> {
     }
 
     componentDidMount() {
-        console.log("Main::componentDidMount() ");
+        //console.log("Main::componentDidMount() ");
     }
 
     //// render ///////////////////////////////////////////////////////////////////////////////
@@ -37,6 +38,10 @@ export class Main extends React.Component<MainProps, MainState> {
 
         const PageHome = () => (
             <Home />
+        );
+
+        const PageTopics = () => (
+            <Topics />
         );
 
         const store = new Transactions()
@@ -48,16 +53,22 @@ export class Main extends React.Component<MainProps, MainState> {
         return (
             <div className="component-app">
                 <Header />
-                <Router>
+                {/* <Router>
                     <div>
                         <Navigation />
 
                         <div className="main-content">
                             <Route exact path="/" component={PageHome} />
                             <Route exact path="/trading" component={PageTrading} />
+                            <Route exact path="/topics" component={PageTopics} />
                         </div>
                     </div>
-                </Router>
+                </Router> */}
+
+                <Navigation />
+                <div className="main-content">
+                    <Topics />
+                </div>
             </div>
         );
     }

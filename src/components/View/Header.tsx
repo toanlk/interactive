@@ -22,7 +22,7 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
     }
 
     componentDidMount() {
-        console.log("Header::componentDidMount() ");
+        //console.log("Header::componentDidMount() ");
         //this.fetchData();
         //setInterval(this.fetchData.bind(this), 30000); // 30 seconds in milliseconds
     }

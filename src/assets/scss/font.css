@@ -11,3 +11,6 @@
     font-weight: 500;
     src: local('Quicksand Medium'), local('Quicksand-Medium'), url('../fonts/quicksand/Quicksand_normal_500_default.woff') format('woff');
 }
+
+.btnAdd { position: absolute !important; bottom: 20px; right: 20px; }
+.task-completed { text-decoration: line-through }
