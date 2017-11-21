@@ -12,5 +12,38 @@
     src: local('Quicksand Medium'), local('Quicksand-Medium'), url('../fonts/quicksand/Quicksand_normal_500_default.woff') format('woff');
 }
 
-.btnAdd { position: absolute !important; bottom: 20px; right: 20px; }
-.task-completed { text-decoration: line-through }
+.btnAdd {
+    position: absolute !important;
+    bottom: 20px;
+    right: 20px;
+}
+
+.task-completed {
+    text-decoration: line-through
+}
+
+.popover {
+    position: absolute;
+    z-index: 2
+}
+.cover {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.color {
+    width: 32px;
+    height: 32px;
+    border-radius: 2px;
+    background-color: #333333;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .1);
+}
+
+.swatch {
+    display: block;
+    margin-top: 10px
+}

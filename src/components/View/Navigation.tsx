@@ -14,13 +14,13 @@ import { IconButton, Drawer, Divider, List, ListItem, ListItemIcon, ListItemText
 //// Props and States /////////////////////////////////////////////////////////////////////
 
 export interface MainState { open: boolean }
-export interface MainProps extends React.Props<Navigation> { }
+export interface NavigationProps extends React.Props<Navigation> { }
 
 //// Class ///////////////////////////////////////////////////////////////////////////////
 
-export class Navigation extends React.Component<MainProps, MainState> {
+export class Navigation extends React.Component<NavigationProps, MainState> {
 
-    constructor(props: MainProps) {
+    constructor(props: NavigationProps) {
         super(props);
         this.state = this.getInitialState();
     }
@@ -29,26 +29,32 @@ export class Navigation extends React.Component<MainProps, MainState> {
         return { open: true }
     }
 
-    handleDrawerToggle = () => {
-        this.setState({ open: !this.state.open });
-    };
-
     //// render ///////////////////////////////////////////////////////////////////////////////
 
     render() {
+
+        let location = window.location.hash;
+
+        let home_page = location == '' || location == '#/' ? 'selected' : '';
+        let topics_page = location.indexOf('#/topics') != -1 ? 'selected' : '';
+        let customization_page = location == '#/customization' ? 'selected' : '';
+        let map_page = location == '#/map' ? 'selected' : '';
+        let performance_page = location == '#/performance' ? 'selected' : '';
+        let trading_page = location == '#/trading' ? 'selected' : '';
+
         return (
             <Drawer type="permanent" className="drawerPaper" open={this.state.open}>
                 <div className={this.state.open ? "drawerInner" : "drawerInnerClose"}>
                     <div className="drawerHeader"></div>
                     <List className="lstMenu">
-                        <Link to='/' className="selected">
+                        <Link to="/" className={home_page}>
                             <ListItem button>
                                 <ListItemIcon><HomeIcon /></ListItemIcon>
                                 <ListItemText primary="Home" />
                             </ListItem>
                         </Link>
                         <Divider />
-                        <Link to="/customization">
+                        <Link to="/customization" className={customization_page}>
                             <ListItem button>
                                 <ListItemIcon><ViewQuiltIcon /></ListItemIcon>
                                 <ListItemText primary="Customization" />
@@ -58,25 +64,25 @@ export class Navigation extends React.Component<MainProps, MainState> {
                         <ListItem className="lstTitle">
                             <ListItemText primary="Reports" />
                         </ListItem>
-                        <Link to="/map">
+                        <Link to="/map" className={map_page}>
                             <ListItem button>
                                 <ListItemIcon><LayersIcon /></ListItemIcon>
                                 <ListItemText primary="Map" />
                             </ListItem>
                         </Link>
-                        <Link to="/topics">
+                        <Link to="/topics" className={topics_page} onClick={this.changeRoute}>
                             <ListItem button>
                                 <ListItemIcon><BookIcon /></ListItemIcon>
                                 <ListItemText primary="Topics" />
                             </ListItem>
                         </Link>
-                        <Link to="/performance">
+                        <Link to="/performance" className={performance_page}>
                             <ListItem button>
                                 <ListItemIcon><AssessmentIcon /></ListItemIcon>
                                 <ListItemText primary="Performance" />
                             </ListItem>
                         </Link>
-                        <Link to="/trading">
+                        <Link to="/trading" className={trading_page}>
                             <ListItem button>
                                 <ListItemIcon><EuroIcon /></ListItemIcon>
                                 <ListItemText primary="Trading" />
@@ -95,4 +101,11 @@ export class Navigation extends React.Component<MainProps, MainState> {
 
     //// logic ///////////////////////////////////////////////////////////////////////////////
 
+    handleDrawerToggle = () => {
+        this.setState({ open: !this.state.open });
+    };
+
+    changeRoute() {
+        let location = window.location.hash;
+    }
 }

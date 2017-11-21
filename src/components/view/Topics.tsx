@@ -12,8 +12,8 @@ import { TextField, Button, Grid } from 'material-ui';
 
 //// Props and States /////////////////////////////////////////////////////////////////////
 
-export interface TopicsState { db: any, is_add_todo: boolean }
-export interface TopicsProps extends React.Props<Topics> { }
+export interface TopicsState { db: any, is_add_todo: boolean, is_open_confirmation: boolean, selected_id: number }
+export interface TopicsProps extends React.Props<Topics> { url: string }
 
 //// Class ///////////////////////////////////////////////////////////////////////////////
 
@@ -45,7 +45,7 @@ export class Topics extends React.Component<TopicsProps, TopicsState> {
 
         let firebaseRef = firebase.database().ref('todos');
 
-        return { db: firebaseRef, is_add_todo: false }
+        return { db: firebaseRef, is_add_todo: false, is_open_confirmation: false, selected_id: 0 }
     }
 
     componentDidMount() {
@@ -61,7 +61,7 @@ export class Topics extends React.Component<TopicsProps, TopicsState> {
                     You have {store.todos.length} tasks to do today.
                 </Grid>
                 <Grid item xs={12}>
-                    <TodoListView todos={store.todos} handleDelete={this.deleteTodo.bind(this)} />
+                    <TodoListView todos={store.todos} url={this.props.url} handleDelete={this.deleteTodo.bind(this)} handleEdit={this.editTodo} />
                 </Grid>
 
                 <Button fab color="primary" className="btnAdd" onClick={this.handleOpenDialog.bind(this)}>
@@ -69,7 +69,7 @@ export class Topics extends React.Component<TopicsProps, TopicsState> {
                 </Button>
 
                 <AddTodo open={this.state.is_add_todo} handleClose={this.handleCloseDialog.bind(this)} />
-                <Confirmation />
+                <Confirmation open={this.state.is_open_confirmation} handleClose={this.closeConfirmation.bind(this)} />
             </Grid>
         );
     }
@@ -89,19 +89,12 @@ export class Topics extends React.Component<TopicsProps, TopicsState> {
         store.todos = todos;
     }
 
-    deleteTodo(id: number) {
-        if(id > 0) {
-            this.state.db.child(id).remove();
-            this.fetchTodo();
-        }
-    }
-
     handleOpenDialog() {
         this.setState({ is_add_todo: true });
     };
 
     handleCloseDialog(task: string) {
-        
+
         if (task && task.trim().length > 0) {
 
             let incNumb = !store.todos ? 1 : store.todos.length + 1;
@@ -117,4 +110,26 @@ export class Topics extends React.Component<TopicsProps, TopicsState> {
 
         this.setState({ is_add_todo: false });
     };
+
+    openConfirmation(id: number) {
+        this.setState({ is_add_todo: false, is_open_confirmation: true, selected_id: id });
+    }
+
+    closeConfirmation(is_confirm: boolean) {
+        
+        if (is_confirm && this.state.selected_id > 0) {
+            this.state.db.child(this.state.selected_id).remove();
+            this.fetchTodo();
+        }
+
+        this.setState({ is_add_todo: false, is_open_confirmation: false, selected_id: 0 });
+    }
+
+    deleteTodo(id: number) {
+        this.openConfirmation(id);
+    }
+
+    editTodo(id: number) {
+        
+    }
 }

@@ -4,8 +4,9 @@ import Dialog, { DialogActions, DialogContent, DialogContentText, DialogTitle, w
 
 //// Props and States /////////////////////////////////////////////////////////////////////
 
-export interface ConfirmationState { open: boolean }
-export interface ConfirmationProps extends React.Props<Confirmation> { fullScreen?: boolean, title?: string, text?: string }
+export interface ConfirmationState {}
+export interface ConfirmationProps extends React.Props<Confirmation> { 
+    open: boolean, handleClose: (is_confirm: boolean) => void, title?: string, text?: string }
 
 //// Class ///////////////////////////////////////////////////////////////////////////////
 
@@ -24,25 +25,25 @@ export class Confirmation extends React.Component<ConfirmationProps, Confirmatio
     }
 
     getInitialState(): ConfirmationState {
-        return { open: false }
+        return { }
     }
 
     //// render ///////////////////////////////////////////////////////////////////////////////
 
     render() {
         return (
-            <Dialog fullScreen={this.props.fullScreen} open={this.state.open} onRequestClose={this.handleRequestClose}>
-                <DialogTitle>{this.props.title}</DialogTitle>
+            <Dialog open={this.props.open} onRequestClose={this.handleClose}>
+                <DialogTitle>Confirmation</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        {this.props.text}
+                    Do you want to remove this item?
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={this.handleRequestClose} color="primary">
+                    <Button onClick={() => this.handleClose(false)} color="primary">
                         Disagree
                     </Button>
-                    <Button onClick={this.handleRequestClose} color="primary" autoFocus>
+                    <Button onClick={() => this.handleClose(true)} color="primary" autoFocus>
                         Agree
                     </Button>
                 </DialogActions>
@@ -52,11 +53,7 @@ export class Confirmation extends React.Component<ConfirmationProps, Confirmatio
 
     //// logic ///////////////////////////////////////////////////////////////////////////////
 
-    handleClickOpen = () => {
-        this.setState({ open: true });
-    };
-
-    handleRequestClose = () => {
-        this.setState({ open: false });
+    handleClose(is_confirm: boolean) {
+        this.props.handleClose(is_confirm);
     };
 }

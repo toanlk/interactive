@@ -78,7 +78,9 @@ span {
     height: 65px
 }
 
-.icon-header { width: 30px; margin-right: 10px }
+.appbar a { text-decoration: none; color: #555555; display: flex; flex-grow: 1 }
+.appbar h2 { line-height: 1.7em }
+.icon-header { width: 30px; height: 30px; margin-right: 10px }
 
 .avatar {
     background-color: #ffffff;

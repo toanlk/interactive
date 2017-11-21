@@ -1,32 +1,59 @@
 import * as React from 'react';
+import { observer } from 'mobx-react';
+import * as firebase from "firebase";
+import { Transactions } from '../logic/Transactions';
+
+import { LastTransactions } from '../view/trading/LastTransactions';
 
 import { Card, CardHeader, CardContent, LinearProgress, Grid, Typography } from 'material-ui';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
 
 //// Props and States /////////////////////////////////////////////////////////////////////
 
-export interface MainState { }
-export interface MainProps extends React.Props<Trading> { store: any }
+export interface TradingState { db: any, store: any }
+export interface TradingProps extends React.Props<Trading> { }
 
 //// Class ///////////////////////////////////////////////////////////////////////////////
 
-export class Trading extends React.Component<MainProps, MainState> {
+@observer
+export class Trading extends React.Component<TradingProps, TradingState> {
 
-    constructor(props: MainProps) {
+    constructor(props: TradingProps) {
         super(props);
         this.state = this.getInitialState();
     }
 
-    getInitialState(): MainState {
-        return {}
+    getInitialState(): TradingState {
+        // Initialize Firebase
+        if (firebase.apps.length === 0) {
+            let config = {
+                apiKey: "AIzaSyCWXI6_L5CNH2dRDKtlI73GR_hdToxnxSw",
+                authDomain: "todo-3640d.firebaseapp.com",
+                databaseURL: "https://todo-3640d.firebaseio.com",
+                projectId: "todo-3640d",
+                storageBucket: "",
+                messagingSenderId: "269458430363"
+            };
+            firebase.initializeApp(config);
+        }
+
+        let firebaseRef = firebase.database().ref('trading');
+
+        const store = new Transactions();
+
+        return { db: firebaseRef, store: store }
+    }
+
+    componentDidMount() {
+        this.fetchTrading();
     }
 
     //// render ///////////////////////////////////////////////////////////////////////////////
 
     render() {
 
-        let progress_sell = (this.props.store.buy_trans.length / this.props.store.numbTrans) * 100;
-        let progress_buy = (this.props.store.sell_trans.length / this.props.store.numbTrans) * 100;
+        let progress_sell = (this.state.store.buy_trans.length / this.state.store.numbTrans) * 100;
+        let progress_buy = (this.state.store.sell_trans.length / this.state.store.numbTrans) * 100;
 
         return (
             <Grid container>
@@ -39,7 +66,7 @@ export class Trading extends React.Component<MainProps, MainState> {
                         <CardHeader title="Buy" />
                         <CardContent>
                             <Typography type="headline" component="h1" color={'primary'}>
-                                {numberWithCommas(this.props.store.total_buy)}
+                                {numberWithCommas(this.state.store.total_buy)}
                             </Typography>
                         </CardContent>
                     </Card>
@@ -50,7 +77,7 @@ export class Trading extends React.Component<MainProps, MainState> {
                         <CardHeader title="Sell" />
                         <CardContent>
                             <Typography type="headline" component="h1" color={'accent'}>
-                                {numberWithCommas(this.props.store.total_sell)}
+                                {numberWithCommas(this.state.store.total_sell)}
                             </Typography>
                         </CardContent>
                     </Card>
@@ -61,7 +88,7 @@ export class Trading extends React.Component<MainProps, MainState> {
                         <CardHeader title="Profit" />
                         <CardContent>
                             <Typography type="headline" component="h1" color={'accent'}>
-                                {numberWithCommas(this.props.store.total_profit)}
+                                {numberWithCommas(this.state.store.total_profit)}
                             </Typography>
                         </CardContent>
                     </Card>
@@ -69,19 +96,19 @@ export class Trading extends React.Component<MainProps, MainState> {
 
                 <Grid item xs={4}>
                     <Card>
-                        <CardHeader title="Summary" subheader={this.props.store.numbTrans + " transactions"} />
+                        <CardHeader title="Summary" subheader={this.state.store.numbTrans + " transactions"} />
                         <CardContent>
                             <Grid container>
                                 <Grid item xs={6}>
                                     <Typography type="headline" component="h1">
-                                        {this.props.store.buy_trans.length}
+                                        {this.state.store.buy_trans.length}
                                     </Typography>
                                     <Typography component="p">Buying Transactions</Typography>
                                     <LinearProgress value={progress_buy} mode="determinate" className="progress-bar" />
                                 </Grid>
                                 <Grid item xs={6}>
                                     <Typography type="headline" component="h1">
-                                        {this.props.store.sell_trans.length}
+                                        {this.state.store.sell_trans.length}
                                     </Typography>
                                     <Typography component="p">Selling Transactions</Typography>
                                     <LinearProgress color={'accent'} value={progress_sell} mode="determinate" className="progress-bar" />
@@ -91,36 +118,10 @@ export class Trading extends React.Component<MainProps, MainState> {
                     </Card>
                 </Grid>
                 <Grid item xs={12}>
-                    <Card>
-                        <CardHeader title="Last buying transactions" subheader={this.props.store.last_buy_trans.length + " transactions"} />
-                        <CardContent>
-                            <Table>
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell>Reference ID</TableCell>
-                                        <TableCell numeric>Coin (bcn)</TableCell>
-                                        <TableCell numeric>Price (vnd)</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {this.props.store.last_buy_trans.map((trans: { ref: string, coin_amount: number, fiat_amount: number }) => {
-                                        return (
-                                            <TableRow key={trans.ref}>
-                                                <TableCell>{trans.ref}</TableCell>
-                                                <TableCell numeric>{trans.coin_amount}</TableCell>
-                                                <TableCell numeric>{numberWithCommas(trans.fiat_amount)}</TableCell>
-                                            </TableRow>
-                                        );
-                                    })}
-                                    <TableRow>
-                                        <TableCell></TableCell>
-                                        <TableCell>{}</TableCell>
-                                        <TableCell>{}</TableCell>
-                                    </TableRow>
-                                </TableBody>
-                            </Table>
-                        </CardContent>
-                    </Card>
+                    <LastTransactions store={this.state.store} />
+                </Grid>
+                <Grid item xs={12}>
+                    <LastTransactions store={this.state.store} type="sell" />
                 </Grid>
             </Grid>
         );
@@ -128,6 +129,19 @@ export class Trading extends React.Component<MainProps, MainState> {
 
     //// logic ///////////////////////////////////////////////////////////////////////////////
 
+    async fetchTrading() {
+
+        // Read data once
+        let transactions = await this.state.db.once('value').then(function (snapshot) {
+            return snapshot.val();
+        });
+      
+        transactions = transactions.filter((trans: any) => {
+            if (trans) return trans;
+        });
+
+        this.state.store.transactions = transactions;
+    }
 }
 
 export function numberWithCommas(x: number) {

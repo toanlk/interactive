@@ -33,10 +33,12 @@ export class Header extends React.Component<HeaderProps, HeaderState> {
         return (
             <AppBar position="static" color="default" className="appbar">
                 <Toolbar>
-                    <img src="./src/assets/img/icon-module.png" className="icon-header"/>
-                    <Typography type="title" color="inherit" className="flex">
-                        Dashboard
+                    <a href="/">
+                        <img src="./src/assets/img/icon-module.png" className="icon-header" />
+                        <Typography type="title" color="inherit" className="flex">
+                            Dashboard
                     </Typography>
+                    </a>
                     <div className="real-time">
                         Bid: <span>{this.state.rates.bid}</span>
                     </div>
