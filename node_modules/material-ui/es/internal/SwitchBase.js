@@ -82,10 +82,8 @@ export default function createSwitch({
         checked: checkedProp,
         classes,
         className: classNameProp,
-        checkedClassName,
         checkedIcon,
         disabled: disabledProp,
-        disabledClassName,
         icon: iconProp,
         inputProps,
         inputRef,
@@ -94,7 +92,7 @@ export default function createSwitch({
         tabIndex,
         value
       } = _props,
-            other = _objectWithoutProperties(_props, ['checked', 'classes', 'className', 'checkedClassName', 'checkedIcon', 'disabled', 'disabledClassName', 'icon', 'inputProps', 'inputRef', 'name', 'onChange', 'tabIndex', 'value']);
+            other = _objectWithoutProperties(_props, ['checked', 'classes', 'className', 'checkedIcon', 'disabled', 'icon', 'inputProps', 'inputRef', 'name', 'onChange', 'tabIndex', 'value']);
 
       const { muiFormControl } = this.context;
       let disabled = disabledProp;
@@ -107,8 +105,8 @@ export default function createSwitch({
 
       const checked = this.isControlled ? checkedProp : this.state.checked;
       const className = classNames(classes.root, classes.default, classNameProp, {
-        [classNames(classes.checked, checkedClassName)]: checked,
-        [classNames(classes.disabled, disabledClassName)]: disabled
+        [classes.checked]: checked,
+        [classes.disabled]: disabled
       });
 
       let icon = checked ? checkedIcon : iconProp;

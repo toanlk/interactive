@@ -2,7 +2,15 @@
 
 var babelPluginFlowReactPropTypes_proptype_SyntheticUIEventHandler = require("prop-types").func;
 
-var babelPluginFlowReactPropTypes_proptype_DOMNode = require("prop-types").oneOfType([require("prop-types").any, require("prop-types").any]);
+var babelPluginFlowReactPropTypes_proptype_DOMNode = require("prop-types").oneOfType([function (props, propName, componentName) {
+  if (!Object.prototype.hasOwnProperty.call(props, propName)) {
+    throw new Error("Prop `" + propName + "` has type 'any', but was not provided to `" + componentName + "`. Pass undefined or any other value.");
+  }
+}, function (props, propName, componentName) {
+  if (!Object.prototype.hasOwnProperty.call(props, propName)) {
+    throw new Error("Prop `" + propName + "` has type 'any', but was not provided to `" + componentName + "`. Pass undefined or any other value.");
+  }
+}]);
 
 /**
  * return type of ReactDOM.findDOMNode()

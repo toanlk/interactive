@@ -256,7 +256,7 @@ var ButtonBase = function (_React$Component) {
       if (_this.props.onKeyboardFocus) {
         _this.props.onKeyboardFocus(event);
       }
-    }, _this.ripple = null, _this.keyDown = false, _this.button = null, _this.keyboardFocusTimeout = null, _this.keyboardFocusCheckTime = 30, _this.keyboardFocusMaxCheckTimes = 5, _this.handleKeyDown = function (event) {
+    }, _this.ripple = null, _this.keyDown = false, _this.button = null, _this.keyboardFocusTimeout = null, _this.keyboardFocusCheckTime = 50, _this.keyboardFocusMaxCheckTimes = 5, _this.handleKeyDown = function (event) {
       var _this$props = _this.props,
           component = _this$props.component,
           focusRipple = _this$props.focusRipple,

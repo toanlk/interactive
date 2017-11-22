@@ -65,11 +65,6 @@ var babelPluginFlowReactPropTypes_proptype_Props = {
   checked: require('prop-types').oneOfType([require('prop-types').bool, require('prop-types').string]),
 
   /**
-   * The CSS class name of the root element when checked.
-   */
-  checkedClassName: require('prop-types').string,
-
-  /**
    * The icon to display when the component is checked.
    * If a string is provided, it will be used as a font ligature.
    */
@@ -94,11 +89,6 @@ var babelPluginFlowReactPropTypes_proptype_Props = {
    * If `true`, the switch will be disabled.
    */
   disabled: require('prop-types').bool,
-
-  /**
-   * The CSS class name of the root element when disabled.
-   */
-  disabledClassName: require('prop-types').string,
 
   /**
    * If `true`, the ripple effect will be disabled.
@@ -155,6 +145,5 @@ var RadioDocs = exports.RadioDocs = function RadioDocs(props) {
 RadioDocs.propTypes = process.env.NODE_ENV !== "production" ? (_ref2 = {
   classes: require('prop-types').object.isRequired,
   checked: require('prop-types').oneOfType([require('prop-types').bool, require('prop-types').string]),
-  checkedClassName: require('prop-types').string,
   checkedIcon: typeof babelPluginFlowReactPropTypes_proptype_Node === 'function' ? babelPluginFlowReactPropTypes_proptype_Node : require('prop-types').shape(babelPluginFlowReactPropTypes_proptype_Node)
-}, (0, _defineProperty3.default)(_ref2, 'classes', require('prop-types').object), (0, _defineProperty3.default)(_ref2, 'className', require('prop-types').string), (0, _defineProperty3.default)(_ref2, 'defaultChecked', require('prop-types').bool), (0, _defineProperty3.default)(_ref2, 'disabled', require('prop-types').bool), (0, _defineProperty3.default)(_ref2, 'disabledClassName', require('prop-types').string), (0, _defineProperty3.default)(_ref2, 'disableRipple', require('prop-types').bool), (0, _defineProperty3.default)(_ref2, 'icon', typeof babelPluginFlowReactPropTypes_proptype_Node === 'function' ? babelPluginFlowReactPropTypes_proptype_Node : require('prop-types').shape(babelPluginFlowReactPropTypes_proptype_Node)), (0, _defineProperty3.default)(_ref2, 'inputProps', require('prop-types').object), (0, _defineProperty3.default)(_ref2, 'inputRef', require('prop-types').func), (0, _defineProperty3.default)(_ref2, 'name', require('prop-types').string), (0, _defineProperty3.default)(_ref2, 'onChange', require('prop-types').func), (0, _defineProperty3.default)(_ref2, 'tabIndex', require('prop-types').oneOfType([require('prop-types').number, require('prop-types').string])), (0, _defineProperty3.default)(_ref2, 'value', require('prop-types').string), _ref2) : {};
+}, (0, _defineProperty3.default)(_ref2, 'classes', require('prop-types').object), (0, _defineProperty3.default)(_ref2, 'className', require('prop-types').string), (0, _defineProperty3.default)(_ref2, 'defaultChecked', require('prop-types').bool), (0, _defineProperty3.default)(_ref2, 'disabled', require('prop-types').bool), (0, _defineProperty3.default)(_ref2, 'disableRipple', require('prop-types').bool), (0, _defineProperty3.default)(_ref2, 'icon', typeof babelPluginFlowReactPropTypes_proptype_Node === 'function' ? babelPluginFlowReactPropTypes_proptype_Node : require('prop-types').shape(babelPluginFlowReactPropTypes_proptype_Node)), (0, _defineProperty3.default)(_ref2, 'inputProps', require('prop-types').object), (0, _defineProperty3.default)(_ref2, 'inputRef', require('prop-types').func), (0, _defineProperty3.default)(_ref2, 'name', require('prop-types').string), (0, _defineProperty3.default)(_ref2, 'onChange', require('prop-types').func), (0, _defineProperty3.default)(_ref2, 'tabIndex', require('prop-types').oneOfType([require('prop-types').number, require('prop-types').string])), (0, _defineProperty3.default)(_ref2, 'value', require('prop-types').string), _ref2) : {};

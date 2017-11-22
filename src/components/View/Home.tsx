@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
-import * as firebase from "firebase";
+import * as firebase from 'firebase';
+
+import ColorPicker from 'color-picker';
 
 //// Props and States /////////////////////////////////////////////////////////////////////
 
@@ -18,7 +20,7 @@ export class Home extends React.Component<HomeProps, HomeState> {
     }
 
     getInitialState(): HomeState {
-        return { }
+        return {}
     }
 
     componentDidMount() {
@@ -29,10 +31,10 @@ export class Home extends React.Component<HomeProps, HomeState> {
     //// render ///////////////////////////////////////////////////////////////////////////////
 
     render() {
-        
+
         return (
             <div>
-                Hallo
+                <ColorPicker color="#333" />
             </div>
         );
     }

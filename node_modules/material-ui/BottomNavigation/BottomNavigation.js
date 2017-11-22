@@ -79,7 +79,11 @@ var babelPluginFlowReactPropTypes_proptype_Props = {
   /**
    * The value of the currently selected `BottomNavigationButton`.
    */
-  value: require('prop-types').any.isRequired
+  value: function value(props, propName, componentName) {
+    if (!Object.prototype.hasOwnProperty.call(props, propName)) {
+      throw new Error('Prop `' + propName + '` has type \'any\', but was not provided to `' + componentName + '`. Pass undefined or any other value.');
+    }
+  }
 };
 
 
@@ -96,6 +100,7 @@ function BottomNavigation(props) {
   var className = (0, _classnames2.default)(classes.root, classNameProp);
 
   var children = _react2.default.Children.map(childrenProp, function (child, childIndex) {
+    if (!_react2.default.isValidElement(child)) return null;
     var childValue = child.props.value || childIndex;
     return _react2.default.cloneElement(child, {
       selected: childValue === value,
@@ -116,7 +121,11 @@ BottomNavigation.propTypes = process.env.NODE_ENV !== "production" ? (_ref = {
   classes: require('prop-types').object.isRequired,
   showLabels: require('prop-types').bool.isRequired,
   children: typeof babelPluginFlowReactPropTypes_proptype_Node === 'function' ? babelPluginFlowReactPropTypes_proptype_Node.isRequired ? babelPluginFlowReactPropTypes_proptype_Node.isRequired : babelPluginFlowReactPropTypes_proptype_Node : require('prop-types').shape(babelPluginFlowReactPropTypes_proptype_Node).isRequired
-}, (0, _defineProperty3.default)(_ref, 'classes', require('prop-types').object), (0, _defineProperty3.default)(_ref, 'className', require('prop-types').string), (0, _defineProperty3.default)(_ref, 'onChange', require('prop-types').func), (0, _defineProperty3.default)(_ref, 'showLabels', require('prop-types').bool), (0, _defineProperty3.default)(_ref, 'value', require('prop-types').any.isRequired), _ref) : {};
+}, (0, _defineProperty3.default)(_ref, 'classes', require('prop-types').object), (0, _defineProperty3.default)(_ref, 'className', require('prop-types').string), (0, _defineProperty3.default)(_ref, 'onChange', require('prop-types').func), (0, _defineProperty3.default)(_ref, 'showLabels', require('prop-types').bool), (0, _defineProperty3.default)(_ref, 'value', function value(props, propName, componentName) {
+  if (!Object.prototype.hasOwnProperty.call(props, propName)) {
+    throw new Error('Prop `' + propName + '` has type \'any\', but was not provided to `' + componentName + '`. Pass undefined or any other value.');
+  }
+}), _ref) : {};
 BottomNavigation.defaultProps = {
   showLabels: false
 };

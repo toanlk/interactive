@@ -55,7 +55,7 @@ class ButtonBase extends React.Component {
       if (this.props.onKeyboardFocus) {
         this.props.onKeyboardFocus(event);
       }
-    }, this.ripple = null, this.keyDown = false, this.button = null, this.keyboardFocusTimeout = null, this.keyboardFocusCheckTime = 30, this.keyboardFocusMaxCheckTimes = 5, this.handleKeyDown = event => {
+    }, this.ripple = null, this.keyDown = false, this.button = null, this.keyboardFocusTimeout = null, this.keyboardFocusCheckTime = 50, this.keyboardFocusMaxCheckTimes = 5, this.handleKeyDown = event => {
       const { component, focusRipple, onKeyDown, onClick } = this.props;
       const key = keycode(event);
 

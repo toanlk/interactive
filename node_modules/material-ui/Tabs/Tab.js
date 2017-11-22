@@ -209,7 +209,11 @@ var babelPluginFlowReactPropTypes_proptype_Props = {
   /**
    * You can provide your own value. Otherwise, we fallback to the child position index.
    */
-  value: require('prop-types').any
+  value: function value(props, propName, componentName) {
+    if (!Object.prototype.hasOwnProperty.call(props, propName)) {
+      throw new Error('Prop `' + propName + '` has type \'any\', but was not provided to `' + componentName + '`. Pass undefined or any other value.');
+    }
+  }
 };
 
 var Tab = function (_React$Component) {

@@ -74,6 +74,9 @@ var light = exports.light = {
     paper: _common2.default.white,
     appBar: _grey2.default[100],
     contentFrame: _grey2.default[200]
+  },
+  line: {
+    stepper: _grey2.default[400]
   }
 };
 
@@ -103,6 +106,10 @@ var dark = exports.dark = {
     paper: _grey2.default[800],
     appBar: _grey2.default[900],
     contentFrame: _grey2.default[900]
+  },
+  line: {
+    // TODO: What should the dark theme have for stepper line? Not stated in style guide
+    stepper: _grey2.default[400]
   }
 };
 
@@ -140,6 +147,7 @@ function createPalette(palette) {
     input: shades[type].input,
     action: shades[type].action,
     background: shades[type].background,
+    line: shades[type].line,
     getContrastText: getContrastText
   }, other, {
     clone: false // No need to clone deep

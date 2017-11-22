@@ -207,7 +207,11 @@ var babelPluginFlowReactPropTypes_proptype_Props = {
    * The value of the currently selected `Tab`.
    * If you don't want any selected `Tab`, you can set this property to `false`.
    */
-  value: require('prop-types').any.isRequired
+  value: function value(props, propName, componentName) {
+    if (!Object.prototype.hasOwnProperty.call(props, propName)) {
+      throw new Error('Prop `' + propName + '` has type \'any\', but was not provided to `' + componentName + '`. Pass undefined or any other value.');
+    }
+  }
 };
 var babelPluginFlowReactPropTypes_proptype_TabsMeta = {
   clientWidth: require('prop-types').number.isRequired,

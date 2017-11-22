@@ -14,6 +14,7 @@ export const styles = theme => ({
   root: {
     boxSizing: 'border-box',
     lineHeight: '48px',
+    listStyle: 'none',
     paddingLeft: theme.spacing.unit * 2,
     paddingRight: theme.spacing.unit * 2,
     color: theme.palette.text.secondary,
@@ -43,11 +44,12 @@ function ListSubheader(props) {
     children,
     classes,
     className: classNameProp,
+    component: ComponentProp,
     color,
     disableSticky,
     inset
   } = props,
-        other = _objectWithoutProperties(props, ['children', 'classes', 'className', 'color', 'disableSticky', 'inset']);
+        other = _objectWithoutProperties(props, ['children', 'classes', 'className', 'component', 'color', 'disableSticky', 'inset']);
   const className = classNames(classes.root, {
     [classes[`color${capitalizeFirstLetter(color)}`]]: color !== 'default',
     [classes.inset]: inset,
@@ -55,13 +57,14 @@ function ListSubheader(props) {
   }, classNameProp);
 
   return React.createElement(
-    'div',
+    ComponentProp,
     _extends({ className: className }, other),
     children
   );
 }
 
 ListSubheader.defaultProps = {
+  component: 'li',
   color: 'default',
   disableSticky: false,
   inset: false

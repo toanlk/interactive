@@ -106,11 +106,6 @@ var babelPluginFlowReactPropTypes_proptype_Props = {
   checked: require('prop-types').oneOfType([require('prop-types').bool, require('prop-types').string]),
 
   /**
-   * The CSS class name of the root element when checked.
-   */
-  checkedClassName: require('prop-types').string,
-
-  /**
    * The icon to display when the component is checked.
    * If a string is provided, it will be used as a font ligature.
    */
@@ -135,11 +130,6 @@ var babelPluginFlowReactPropTypes_proptype_Props = {
    * If `true`, the switch will be disabled.
    */
   disabled: require('prop-types').bool,
-
-  /**
-   * The CSS class name of the root element when disabled.
-   */
-  disabledClassName: require('prop-types').string,
 
   /**
    * If `true`, the ripple effect will be disabled.
@@ -274,10 +264,8 @@ function createSwitch() {
             checkedProp = _props.checked,
             classes = _props.classes,
             classNameProp = _props.className,
-            checkedClassName = _props.checkedClassName,
             checkedIcon = _props.checkedIcon,
             disabledProp = _props.disabled,
-            disabledClassName = _props.disabledClassName,
             iconProp = _props.icon,
             inputProps = _props.inputProps,
             inputRef = _props.inputRef,
@@ -285,7 +273,7 @@ function createSwitch() {
             onChange = _props.onChange,
             tabIndex = _props.tabIndex,
             value = _props.value,
-            other = (0, _objectWithoutProperties3.default)(_props, ['checked', 'classes', 'className', 'checkedClassName', 'checkedIcon', 'disabled', 'disabledClassName', 'icon', 'inputProps', 'inputRef', 'name', 'onChange', 'tabIndex', 'value']);
+            other = (0, _objectWithoutProperties3.default)(_props, ['checked', 'classes', 'className', 'checkedIcon', 'disabled', 'icon', 'inputProps', 'inputRef', 'name', 'onChange', 'tabIndex', 'value']);
         var muiFormControl = this.context.muiFormControl;
 
         var disabled = disabledProp;
@@ -297,7 +285,7 @@ function createSwitch() {
         }
 
         var checked = this.isControlled ? checkedProp : this.state.checked;
-        var className = (0, _classnames2.default)(classes.root, classes.default, classNameProp, (_classNames = {}, (0, _defineProperty3.default)(_classNames, (0, _classnames2.default)(classes.checked, checkedClassName), checked), (0, _defineProperty3.default)(_classNames, (0, _classnames2.default)(classes.disabled, disabledClassName), disabled), _classNames));
+        var className = (0, _classnames2.default)(classes.root, classes.default, classNameProp, (_classNames = {}, (0, _defineProperty3.default)(_classNames, classes.checked, checked), (0, _defineProperty3.default)(_classNames, classes.disabled, disabled), _classNames));
 
         var icon = checked ? checkedIcon : iconProp;
 

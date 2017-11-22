@@ -35,6 +35,8 @@ var _helpers = require('../utils/helpers');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var babelPluginFlowReactPropTypes_proptype_ElementType = require('react').babelPluginFlowReactPropTypes_proptype_ElementType || require('prop-types').any;
+
 var babelPluginFlowReactPropTypes_proptype_Node = require('react').babelPluginFlowReactPropTypes_proptype_Node || require('prop-types').any;
 
 var styles = exports.styles = function styles(theme) {
@@ -42,6 +44,7 @@ var styles = exports.styles = function styles(theme) {
     root: {
       boxSizing: 'border-box',
       lineHeight: '48px',
+      listStyle: 'none',
       paddingLeft: theme.spacing.unit * 2,
       paddingRight: theme.spacing.unit * 2,
       color: theme.palette.text.secondary,
@@ -84,6 +87,13 @@ var babelPluginFlowReactPropTypes_proptype_Props = {
   className: require('prop-types').string,
 
   /**
+   * The component used for the root node.
+   * Either a string to use a DOM element or a component.
+   * The default value is a `button`.
+   */
+  component: typeof babelPluginFlowReactPropTypes_proptype_ElementType === 'function' ? babelPluginFlowReactPropTypes_proptype_ElementType : require('prop-types').shape(babelPluginFlowReactPropTypes_proptype_ElementType),
+
+  /**
    * The color of the component. It's using the theme palette when that makes sense.
    */
   color: require('prop-types').oneOf(['default', 'primary', 'inherit']),
@@ -106,15 +116,16 @@ function ListSubheader(props) {
   var children = props.children,
       classes = props.classes,
       classNameProp = props.className,
+      ComponentProp = props.component,
       color = props.color,
       disableSticky = props.disableSticky,
       inset = props.inset,
-      other = (0, _objectWithoutProperties3.default)(props, ['children', 'classes', 'className', 'color', 'disableSticky', 'inset']);
+      other = (0, _objectWithoutProperties3.default)(props, ['children', 'classes', 'className', 'component', 'color', 'disableSticky', 'inset']);
 
   var className = (0, _classnames2.default)(classes.root, (_classNames = {}, (0, _defineProperty3.default)(_classNames, classes['color' + (0, _helpers.capitalizeFirstLetter)(color)], color !== 'default'), (0, _defineProperty3.default)(_classNames, classes.inset, inset), (0, _defineProperty3.default)(_classNames, classes.sticky, !disableSticky), _classNames), classNameProp);
 
   return _react2.default.createElement(
-    'div',
+    ComponentProp,
     (0, _extends3.default)({ className: className }, other),
     children
   );
@@ -122,9 +133,11 @@ function ListSubheader(props) {
 
 ListSubheader.propTypes = process.env.NODE_ENV !== "production" ? (_ref = {
   classes: require('prop-types').object.isRequired,
+  component: typeof babelPluginFlowReactPropTypes_proptype_ElementType === 'function' ? babelPluginFlowReactPropTypes_proptype_ElementType.isRequired ? babelPluginFlowReactPropTypes_proptype_ElementType.isRequired : babelPluginFlowReactPropTypes_proptype_ElementType : require('prop-types').shape(babelPluginFlowReactPropTypes_proptype_ElementType).isRequired,
   children: typeof babelPluginFlowReactPropTypes_proptype_Node === 'function' ? babelPluginFlowReactPropTypes_proptype_Node : require('prop-types').shape(babelPluginFlowReactPropTypes_proptype_Node)
-}, (0, _defineProperty3.default)(_ref, 'classes', require('prop-types').object), (0, _defineProperty3.default)(_ref, 'className', require('prop-types').string), (0, _defineProperty3.default)(_ref, 'color', require('prop-types').oneOf(['default', 'primary', 'inherit'])), (0, _defineProperty3.default)(_ref, 'disableSticky', require('prop-types').bool), (0, _defineProperty3.default)(_ref, 'inset', require('prop-types').bool), _ref) : {};
+}, (0, _defineProperty3.default)(_ref, 'classes', require('prop-types').object), (0, _defineProperty3.default)(_ref, 'className', require('prop-types').string), (0, _defineProperty3.default)(_ref, 'component', typeof babelPluginFlowReactPropTypes_proptype_ElementType === 'function' ? babelPluginFlowReactPropTypes_proptype_ElementType : require('prop-types').shape(babelPluginFlowReactPropTypes_proptype_ElementType)), (0, _defineProperty3.default)(_ref, 'color', require('prop-types').oneOf(['default', 'primary', 'inherit'])), (0, _defineProperty3.default)(_ref, 'disableSticky', require('prop-types').bool), (0, _defineProperty3.default)(_ref, 'inset', require('prop-types').bool), _ref) : {};
 ListSubheader.defaultProps = {
+  component: 'li',
   color: 'default',
   disableSticky: false,
   inset: false
